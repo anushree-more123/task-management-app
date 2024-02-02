@@ -7,7 +7,6 @@ import $ from "jquery";
 
 const AddEditTask = () => {
   const dispatch = useDispatch();
-  let modal;
   const initialState = {
     title: "",
     description: "",
