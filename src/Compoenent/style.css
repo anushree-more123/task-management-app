@@ -1,6 +1,6 @@
-.add-task-button-container {
+.action-header-wrapper {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .common-theme-btn {
@@ -18,4 +18,25 @@
     display: flex;
     gap: 10px;
     flex-direction: column;
+}
+
+.status-completed {
+    background-color: #28a745;
+    border-radius: 25px;
+    color: #fff;
+    padding: 5px;
+}
+
+.status-pending {
+    background-color: #dc3545;
+    border-radius: 25px;
+    color: #fff;
+    padding: 5px;
+}
+
+.status-inprogress {
+    background-color: #17a2b8ba;
+    border-radius: 25px;
+    color: #fff;
+    padding: 5px;
 }

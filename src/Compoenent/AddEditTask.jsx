@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_EDIT_TASK, UPDATE_TASK_LIST } from "./TaskReducerActionType";
 import { v4 as uuidv4 } from "uuid";
-import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min";
+import moment from "moment";
+import $ from "jquery";
 
 const AddEditTask = () => {
   const dispatch = useDispatch();
@@ -49,13 +50,7 @@ const AddEditTask = () => {
       }
 
       /**if success then close the modal */
-      // const modalElement = document.getElementById("taskmodal");
-      // console.log(bootstrap);
-      // if (modalElement) {
-      //   modalElement.style.display = "none";
-      //   // modal = new window.bootstrap.Modal(modalElement);
-      //   // modal.hide();
-      // }
+      $("#close-btn").click();
     }
   };
 
@@ -70,6 +65,13 @@ const AddEditTask = () => {
       }
     });
 
+    /**check due date is past date  */
+    if (taskDetails.dueDate.length !== 0) {
+      if (moment(taskDetails.dueDate).isBefore(moment().format("YYYY/MM/DD"))) {
+        cpyErr.dueDate = "Please select valid due date";
+        isValid = false;
+      }
+    }
     setErrTaskDetails({ ...cpyErr });
     return isValid;
   };
@@ -92,18 +94,7 @@ const AddEditTask = () => {
   }, [editTask]);
 
   return (
-    <div>
-      <div className="add-task-button-container">
-        <button
-          type="button"
-          className="btn common-theme-btn"
-          data-bs-toggle="modal"
-          data-bs-target="#taskmodal"
-        >
-          Add Task
-        </button>
-      </div>
-      {/* Modal */}
+    <div id="modal-wrapper">
       <div
         className="modal fade"
         id="taskmodal"
@@ -121,11 +112,12 @@ const AddEditTask = () => {
               </h1>
               <button
                 type="button"
+                id="close-btn"
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 onClick={closeModal}
-              ></button>
+              />
             </div>
             <div className="modal-body">
               <form className="form-wrapper">
@@ -177,10 +169,11 @@ const AddEditTask = () => {
                     value={taskDetails.dueDate}
                     name="dueDate"
                     onChange={(e) => handleOnChange(e)}
+                    min={new Date().toISOString().split("T")[0]}
                   />
                   {errTaskDetails.dueDate && (
                     <small id="dueDateerror" className="form-text text-danger">
-                      {errTaskDetails.description}
+                      {errTaskDetails.dueDate}
                     </small>
                   )}
                 </div>
