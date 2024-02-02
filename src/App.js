@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import TaskTable from './Compoenent/TaskTable';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "bootstrap-icons/font/bootstrap-icons.css";
+import AddEditTask from './Compoenent/AddEditTask';
+import './Compoenent/style.css'
+import DeleteTaskModal from './Compoenent/DeleteTaskModal';
+import Header from './Compoenent/Header';
+import ActionHeaderComp from './Compoenent/ActionHeaderComp';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div className='main-wrapper'>
+        <ActionHeaderComp />
+        <AddEditTask />
+        <TaskTable />
+        <DeleteTaskModal />
+      </div></>
   );
 }
 
