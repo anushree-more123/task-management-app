@@ -1,13 +1,13 @@
 import './App.css';
-import TaskTable from './Compoenent/TaskTable';
+import TaskTable from './Component/TaskTable';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import AddEditTask from './Compoenent/AddEditTask';
-import './Compoenent/style.css'
-import DeleteTaskModal from './Compoenent/DeleteTaskModal';
-import Header from './Compoenent/Header';
-import ActionHeaderComp from './Compoenent/ActionHeaderComp';
+import AddEditTask from './Component/AddEditTask';
+import './Component/style.css'
+import DeleteTaskModal from './Component/DeleteTaskModal';
+import Header from './Component/Header';
+import ActionHeaderComp from './Component/ActionHeaderComp';
 
 function App() {
   return (
