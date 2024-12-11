@@ -1,23 +1,41 @@
-# task-management-app
+# Task Management App
 
-This is Task Management Web Application.
+Welcome to the **Task Management Web Application**! 
 
-Technology Stack -
-React.js
-Redux
+### 🛠️ Technology Stack:
 
-Steps to run task management app code locally -
+* React.js - for building the user interface
+* Redux - for managing application state globally
 
-Clone the project into local.
+### 🚀 Getting Started
 
-Install all the npm packages.
+To run the Task Management App locally, follow these simple steps:
 
-Go into the project folder and type the following command to install all npm packages
+1. **Clone the repository** to your local machine:
 
-- npm install
+    Open your terminal and run the following command:
 
-In order to run the application Type the following command
+    ```bash
+    git clone https://github.com/anushree-more123/task-management-app.git
+    ```
 
-- npm start
+2. **Install the required npm packages:** Navigate into the project folder and install all dependencies:
 
-The Application Runs on localhost:3000
+    ```bash
+    cd task-management-app
+    npm install
+    ```
+
+3. **Start the application:** Once the installation is complete, start the app with:
+
+    ```bash
+    npm start
+    ```
+
+4. **Access the app:** The application will be running on localhost:3000. Open this URL in your browser to see it in action! 
+
+## 📄 Features
+
+* **Task Creation:** Add tasks with descriptions and deadlines.
+* **Task Management:** Update, delete, and mark tasks as completed.
+* **State Management with Redux:** Efficiently handles the state of your tasks across the application.
