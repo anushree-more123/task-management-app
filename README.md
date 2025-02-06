@@ -6,6 +6,7 @@ Welcome to the **Task Management Web Application**!
 
 * React.js - for building the user interface
 * Redux - for managing application state globally
+* Bootstrap - for styling
 
 ### 🚀 Getting Started
 
