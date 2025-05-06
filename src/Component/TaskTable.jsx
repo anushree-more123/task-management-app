@@ -9,7 +9,7 @@ const TaskTable = () => {
     (state) => state.taskStore
   );
   const [list, setList] = useState([]);
-
+  console.log(list);
   /**we persist main taskList so while search we craete
    * new state for data should be available after search operation */
   useEffect(() => {
@@ -20,42 +20,40 @@ const TaskTable = () => {
     );
   }, [searchText, taskList, searchDate]);
 
+  const statusBadgeClass = {
+    "In-Progress": "bg-info text-white",
+    Completed: "bg-success text-white",
+    Pending: "bg-warning text-dark",
+    Failed: "bg-danger text-white",
+  };
   return (
-    <table className="table table-striped shadow-sm p-3 mb-5 bg-white rounded">
-      <thead>
-        <tr>
-          <th scope="col">Sr no.</th>
-          <th scope="col">Task Title</th>
-          <th scope="col">Description</th>
-          <th scope="col">Due Date</th>
-          <th scope="col">Status</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {list.length === 0 ? (
+    <div className="table-responsive">
+      <table className="table table-bordered align-middle text-center">
+        <thead className="table-light">
           <tr>
-            <td colSpan={6} align="center">
-              No task found!
-            </td>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
-        ) : (
-          list.map((value, index) => (
-            <tr key={`task-${value.id}`}>
-              <th scope="row">{index + 1}</th>
-              <td>{value.title}</td>
-              <td>{value.description}</td>
-              <td>{moment(value.dueDate).format("DD MMM YYYY")}</td>
+        </thead>
+        <tbody>
+          {taskList.map((task, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td className="text-start fw-semibold">{task.title}</td>
+              <td className="text-start">{task.description}</td>
+              <td>{task.dueDate}</td>
               <td>
-                {value.status === "In-Progress" ? (
-                  <span className="status-inprogress">{value.status}</span>
-                ) : value.status === "Completed" ? (
-                  <span className="status-completed">{value.status}</span>
-                ) : (
-                  value.status === "Pending" && (
-                    <span className="status-pending">{value.status}</span>
-                  )
-                )}
+                <span
+                  className={`badge rounded-pill px-3 py-2 ${
+                    statusBadgeClass[task.status] || "bg-secondary"
+                  }`}
+                >
+                  {task.status}
+                </span>
               </td>
               <td style={{ display: "flex", gap: "10px" }}>
                 <button
@@ -65,7 +63,7 @@ const TaskTable = () => {
                   onClick={() => {
                     dispatch({
                       type: UPDATE_EDIT_TASK,
-                      payload: { ...value },
+                      payload: { ...task },
                     });
                   }}
                 >
@@ -76,17 +74,17 @@ const TaskTable = () => {
                   data-bs-toggle="modal"
                   data-bs-target="#deletemodal"
                   onClick={() =>
-                    dispatch({ type: SET_DELETE_TASK_ID, payload: value.id })
+                    dispatch({ type: SET_DELETE_TASK_ID, payload: task.id })
                   }
                 >
                   Delete
                 </button>
               </td>
             </tr>
-          ))
-        )}
-      </tbody>
-    </table>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
