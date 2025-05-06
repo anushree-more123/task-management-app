@@ -9,10 +9,10 @@ Welcome to the **Task Management Web Application**!
 - Redux Persist – to persist task data across page reloads
 - Bootstrap – for responsive styling
 
-### Screenshots
+### 📸 Screenshots
 
- <p align="center">
-  <img src="Output/Output1.png" width="200" />
+<p align="center">
+  <img src="Output/Output1.png" />
 </p>
 
 ### 🚀 Getting Started
